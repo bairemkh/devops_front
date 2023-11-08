@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Build Docker Images') {
                 steps {
-                    sh 'docker build -t devops_front -f .'
+                    sh 'docker build -t devops_front .'
                 }
     }
     stage('Push Docker Images to Docker Hub') {
