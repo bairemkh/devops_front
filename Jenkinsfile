@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'Node 16.14.2' // Use the name of the Node.js installation
-        }
-    }
+    any agent
     stages {
     stage('init') {
                 steps {
