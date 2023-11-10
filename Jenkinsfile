@@ -19,9 +19,13 @@ pipeline {
                 }
     }
     stage('Build Docker Images') {
-                steps {
-                    sh 'docker build -t devops_front .'
-                }
+      steps {
+                        script {
+                        def password = 'changeme'
+                        sh "sudo -S docker build -t devops_front ."
+                        sh "echo -n ${password} "
+                        }
+                        }
     }
     stage('Push Docker Images to Docker Hub') {
                 steps {
