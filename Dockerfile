@@ -1,6 +1,6 @@
-FROM node:20 as build
+FROM node:14 as build
 WORKDIR /app
 COPY package*.json ./
-RUN apt-get update && apt-get install -y npm && npm ci
+RUN npm install
 COPY . .
 RUN ng build
