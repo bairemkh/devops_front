@@ -1,6 +1,9 @@
-FROM node:14 as build
+FROM node:16-alpine AS build
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
 COPY . .
-RUN ng build
+RUN npm install
+RUN npm run build
+# Serve Application using Nginx Server
+FROM nginx:alpine
+COPY --from=build /app/dist/summer-workshop-angular/ /usr/share/nginx/html
+EXPOSE 80
